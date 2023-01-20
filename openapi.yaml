@@ -1,0 +1,122 @@
+openapi: 3.0.0
+info:
+  title: DevicesApi
+  description: Device Api
+  version: "0.1"
+servers:
+- url: /
+paths:
+  /api/devices/listall:
+    get:
+      description: Lists all devices 
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/devices'
+  /api/devices/{deviceGuid}/{monitorId}:
+    get:
+      description: Lists all devices 
+      parameters: 
+        - in: path
+          name: "deviceGuid"
+          required: true
+          description: Unique id of the device
+          schema: 
+            type: string
+        - in: path
+          name: "monitorId"
+          required: true
+          description: Unique id of the monitor
+          schema: 
+            type: string
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/deviceMetrics'
+components:
+  schemas:
+    devices:
+      type: array
+      items:
+        properties:
+          deviceId:
+            type: string
+            example: "000150"
+          deviceName:
+            type: string
+            example: "Device one"
+          deviceGuid:
+            type: string
+            example: "0100ADE"
+    deviceMetrics:
+      type: object
+      properties:
+        1674145397: 
+          type: object
+          properties: 
+            scantime: 
+              type: string
+              example: 2022-12-31 00:00:12.371-05
+            datadelay: 
+              type: number
+              example: 12
+            errormessage: 
+              type: string
+              example: 
+            state: 
+              type: number
+              example: 3
+            lastupdated: 
+              type: string
+              example: 2022-12-31 00:00:27.657-05
+            disk_total: 
+              type: number
+              example: 7814024188
+            disk_used: 
+              type: number
+              example: 1658043228
+            disk_free: 
+              type: number
+              example: 6155980960
+            disk_usage: 
+              type: number
+              example: 21
+        1674145409: 
+          type: object
+          properties: 
+            scantime: 
+              type: string
+              example: 2022-12-31 00:00:12.371-05
+            datadelay: 
+              type: number
+              example: 12
+            errormessage: 
+              type: string
+              example: 
+            state: 
+              type: number
+              example: 3
+            lastupdated: 
+              type: string
+              example: 2022-12-31 00:00:27.657-05
+            disk_total: 
+              type: number
+              example: 7814024188
+            disk_used: 
+              type: number
+              example: 1658043228
+            disk_free: 
+              type: number
+              example: 6155980960
+            disk_usage: 
+              type: number
+              example: 21
+
+        
+
